@@ -1,14 +1,10 @@
 repos:
 -   repo: https://github.com/pycqa/flake8
-    rev: '3.9.2'  # pick a git hash / tag to point to
+    rev: '3.9.2'
     hooks:
     -   id: flake8
--   repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.0.1
-    hooks:
-    -   id: check-json
 -   repo: https://github.com/awslabs/cfn-python-lint
-    rev: v0.15.0 # The version of cfn-lint to use
+    rev: v0.54.2
     hooks:
     -   id: cfn-python-lint
-        files: cloudformation/.*\.(json|yml|yaml)$
+        files: .chalice/.*\.(json|yml|yaml)$
