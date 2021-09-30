@@ -1,0 +1,22 @@
+{
+  "version": "2.0",
+  "app_name": "tweet_scheduler",
+  "stages": {
+    "dev": {
+      "autogen_policy": false,
+      "api_gateway_stage": "dev",
+      "environment_variables": {
+        "LOG_LEVEL": "DEBUG",
+        "SECRET_NAME": "dev/aws/pixelprojecttweeter"
+      }
+    },
+    "prod": {
+      "autogen_policy": false,
+      "api_gateway_stage": "prod",
+      "environment_variables": {
+        "LOG_LEVEL": "DEBUG",
+        "SECRET_NAME": "prod/aws/pixelprojecttweeter"
+      }
+    }
+  }
+}

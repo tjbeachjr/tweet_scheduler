@@ -1,0 +1,31 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "logs:CreateLogGroup",
+                "logs:CreateLogStream",
+                "logs:PutLogEvents"
+            ],
+            "Resource": "arn:*:logs:*:*:*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": "secretsmanager:GetSecretValue",
+            "Resource": "arn:aws:secretsmanager:us-east-1:041150305883:secret:prod/aws/pixelprojecttweeter-VrXhzL"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "sqs:GetQueueAttributes",
+                "sqs:GetQueueUrl",
+                "sqs:SendMessage",
+                "sqs:ReceiveMessage",
+                "sqs:DeleteMessage",
+                "sqs:SendMessageBatch"
+            ],
+            "Resource": "arn:aws:sqs:us-east-1:041150305883:tweet-processor"
+        }
+    ]
+}

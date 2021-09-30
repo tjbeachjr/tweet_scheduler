@@ -1,0 +1,6 @@
+boto3==1.17.49
+chalice==1.22.3
+gspread==3.7.0
+oauth2client==4.1.3
+PyOpenSSL==20.0.1
+tweepy==3.10.0

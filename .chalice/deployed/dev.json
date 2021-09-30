@@ -1,0 +1,41 @@
+{
+  "resources": [
+    {
+      "name": "nightly_tweet_session_role",
+      "resource_type": "iam_role",
+      "role_arn": "arn:aws:iam::041150305883:role/tweet_scheduler-dev-nightly_tweet_session",
+      "role_name": "tweet_scheduler-dev-nightly_tweet_session"
+    },
+    {
+      "name": "nightly_tweet_session",
+      "resource_type": "lambda_function",
+      "lambda_arn": "arn:aws:lambda:us-east-1:041150305883:function:tweet_scheduler-dev-nightly_tweet_session"
+    },
+    {
+      "name": "nightly_tweet_session-event",
+      "resource_type": "cloudwatch_event",
+      "rule_name": "tweet_scheduler-dev-nightly_tweet_session-event"
+    },
+    {
+      "name": "tweet_processor_role",
+      "resource_type": "iam_role",
+      "role_arn": "arn:aws:iam::041150305883:role/tweet_scheduler-dev-tweet_processor",
+      "role_name": "tweet_scheduler-dev-tweet_processor"
+    },
+    {
+      "name": "tweet_processor",
+      "resource_type": "lambda_function",
+      "lambda_arn": "arn:aws:lambda:us-east-1:041150305883:function:tweet_scheduler-dev-tweet_processor"
+    },
+    {
+      "name": "tweet_processor-sqs-event-source",
+      "resource_type": "sqs_event",
+      "queue_arn": "arn:aws:sqs:us-east-1:041150305883:tweet-processor",
+      "event_uuid": "7f815efe-8987-48cc-95fd-bba535ceeb97",
+      "queue": "tweet-processor",
+      "lambda_arn": "arn:aws:lambda:us-east-1:041150305883:function:tweet_scheduler-dev-tweet_processor"
+    }
+  ],
+  "schema_version": "2.0",
+  "backend": "api"
+}
