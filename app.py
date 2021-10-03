@@ -80,9 +80,9 @@ def north_america_tweet_session(event):
     tweet_session(shift_length, google_sheets_key, 1)
 
 
-@app.on_sqs_message(queue=os.environ['QUEUE_NAME'], batch_size=1)
+@app.on_sqs_message(queue=os.environ['QUEUE_NAME'], batch_size=10)
 def tweet_processor(event):
-    logger.info(f'Got event [{event}]')
+    logger.info(f'Got event [{event.to_dict()}]')
     for record in event:
         logger.info(f'Received message on queue with contents [{record.to_dict()}]')
         message = TweetScheduleMessage(**json.loads(record.body))
@@ -97,5 +97,8 @@ def tweet_processor(event):
             sqs_client.delete_message(receipt_handle)
         else:
             timeout = int(tweet_time) - current_time
-            logger.info(f'Tweet is not ready for sending.  Setting visibility timeout to [{timeout}] seconds')
+            logger.info(
+                f'Tweet wit handle [{receipt_handle}] is not ready for sending.  '
+                f'Setting visibility timeout to [{timeout}] seconds'
+            )
             sqs_client.change_visibility_timeout(receipt_handle, timeout)
