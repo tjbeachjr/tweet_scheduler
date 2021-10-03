@@ -30,9 +30,9 @@
     {
       "name": "tweet_processor-sqs-event-source",
       "resource_type": "sqs_event",
-      "queue_arn": "arn:aws:sqs:us-east-1:041150305883:tweet-processor",
-      "event_uuid": "7f815efe-8987-48cc-95fd-bba535ceeb97",
-      "queue": "tweet-processor",
+      "queue_arn": "arn:aws:sqs:us-east-1:041150305883:dev-tweet-processor",
+      "event_uuid": "ba54eb38-6ee2-4bc9-868d-b5ecf6e81aa6",
+      "queue": "dev-tweet-processor",
       "lambda_arn": "arn:aws:lambda:us-east-1:041150305883:function:tweet_scheduler-dev-tweet_processor"
     }
   ],

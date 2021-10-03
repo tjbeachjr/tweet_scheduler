@@ -7,7 +7,9 @@
       "api_gateway_stage": "dev",
       "environment_variables": {
         "LOG_LEVEL": "DEBUG",
-        "SECRET_NAME": "dev/aws/pixelprojecttweeter"
+        "SECRET_NAME": "dev/aws/pixelprojecttweeter",
+        "QUEUE_NAME": "dev-tweet-processor",
+        "NIGHTLY_SHIFT_LENGTH": "600"
       }
     },
     "prod": {
@@ -15,7 +17,9 @@
       "api_gateway_stage": "prod",
       "environment_variables": {
         "LOG_LEVEL": "DEBUG",
-        "SECRET_NAME": "prod/aws/pixelprojecttweeter"
+        "SECRET_NAME": "prod/aws/pixelprojecttweeter",
+        "QUEUE_NAME": "prod-tweet-processor",
+        "NIGHTLY_SHIFT_LENGTH": "14400"
       }
     }
   }

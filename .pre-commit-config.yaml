@@ -3,8 +3,3 @@ repos:
     rev: '3.9.2'
     hooks:
     -   id: flake8
--   repo: https://github.com/awslabs/cfn-python-lint
-    rev: v0.54.2
-    hooks:
-    -   id: cfn-python-lint
-        files: .chalice/.*\.(json|yml|yaml)$

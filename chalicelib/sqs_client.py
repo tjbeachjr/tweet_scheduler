@@ -33,6 +33,9 @@ class SQSClient:
         logger.debug(f'SQS send message response [{response}]')
         return response
 
+    def delete_message(self, receipt_handle):
+        self.sqs_client.delete_message(QueueUrl=self.queue_url, ReceiptHandle=receipt_handle)
+
     def change_visibility_timeout(self, receipt_handle, timeout):
         self.sqs_client.change_message_visibility(
             QueueUrl=self.queue_url,

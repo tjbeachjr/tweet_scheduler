@@ -18,14 +18,15 @@
         {
             "Effect": "Allow",
             "Action": [
+                "sqs:ChangeMessageVisibility",
+                "sqs:DeleteMessage",
                 "sqs:GetQueueAttributes",
                 "sqs:GetQueueUrl",
-                "sqs:SendMessage",
                 "sqs:ReceiveMessage",
-                "sqs:DeleteMessage",
+                "sqs:SendMessage",
                 "sqs:SendMessageBatch"
             ],
-            "Resource": "arn:aws:sqs:us-east-1:041150305883:tweet-processor"
+            "Resource": "arn:aws:sqs:us-east-1:041150305883:dev-tweet-processor"
         }
     ]
 }
