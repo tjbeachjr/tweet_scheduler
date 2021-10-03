@@ -9,7 +9,8 @@
         "LOG_LEVEL": "DEBUG",
         "SECRET_NAME": "dev/aws/pixelprojecttweeter",
         "QUEUE_NAME": "dev-tweet-processor",
-        "NIGHTLY_SHIFT_LENGTH": "600"
+        "NIGHTLY_SHIFT_LENGTH": "600",
+        "NORTH_AMERICA_SHIFT_LENGTH": "600"
       }
     },
     "prod": {
@@ -19,7 +20,8 @@
         "LOG_LEVEL": "DEBUG",
         "SECRET_NAME": "prod/aws/pixelprojecttweeter",
         "QUEUE_NAME": "prod-tweet-processor",
-        "NIGHTLY_SHIFT_LENGTH": "14400"
+        "NIGHTLY_SHIFT_LENGTH": "14400",
+        "NORTH_AMERICA_SHIFT_LENGTH": "3600"
       }
     }
   }

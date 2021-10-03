@@ -66,11 +66,18 @@ def tweet_session(shift_length, google_sheets_key, worksheet_number):
     logger.info('All tweets have been scheduled')
 
 
-@app.schedule(Cron(0, 15, '?', '*', '*', '*'))
+@app.schedule(Cron(0, 0, '?', '*', '*', '*'))
 def nightly_tweet_session(event):
     shift_length = int(os.environ['NIGHTLY_SHIFT_LENGTH'])
     logger.info(f'Starting nightly tweet session with shift length [{shift_length}] seconds')
     tweet_session(shift_length, google_sheets_key, 0)
+
+
+@app.schedule(Cron(0, 14, '?', '*', '*', '*'))
+def north_america_tweet_session(event):
+    shift_length = int(os.environ['NORTH_AMERICA_SHIFT_LENGTH'])
+    logger.info(f'Starting North America tweet session with shift length [{shift_length}] seconds')
+    tweet_session(shift_length, google_sheets_key, 1)
 
 
 @app.on_sqs_message(queue=os.environ['QUEUE_NAME'], batch_size=1)
