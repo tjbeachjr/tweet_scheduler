@@ -28,17 +28,19 @@ class SQSClient:
             raise SQSQueueNotFoundException(queue_name)
 
     def send_message(self, body):
-        logger.debug(f'Sending to SQS queue [{self.queue_name}] with body [{body}] ')
+        logger.debug(f'Sending to SQS queue [{self.queue_name}] with body [{body}]')
         response = self.sqs_client.send_message(QueueUrl=self.queue_url, MessageBody=body)
         logger.debug(f'SQS send message response [{response}]')
         return response
 
     def delete_message(self, receipt_handle):
-        self.sqs_client.delete_message(QueueUrl=self.queue_url, ReceiptHandle=receipt_handle)
+        logger.debug(f'Deleting message from SQS queue [{self.queue_name}] with handle [{receipt_handle}]')
+        response = self.sqs_client.delete_message(QueueUrl=self.queue_url, ReceiptHandle=receipt_handle)
+        logger.debug(f'SQS delete message response [{response}]')
 
     def change_visibility_timeout(self, receipt_handle, timeout):
-        self.sqs_client.change_message_visibility(
-            QueueUrl=self.queue_url,
-            ReceiptHandle=receipt_handle,
-            VisibilityTimeout=timeout
+        logger.debug(f'Change message visibility from SQS queue [{self.queue_name}] with handle [{receipt_handle}]')
+        response = self.sqs_client.change_message_visibility(
+            QueueUrl=self.queue_url, ReceiptHandle=receipt_handle, VisibilityTimeout=timeout
         )
+        logger.debug(f'SQS change message visibility response [{response}]')

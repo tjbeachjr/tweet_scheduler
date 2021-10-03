@@ -33,6 +33,10 @@ class TweetScheduleMessage:
         })
 
 
+class ReschedulingTweetException(Exception):
+    pass
+
+
 def tweet_session(shift_length, google_sheets_key, worksheet_number):
     logger.info(f'Loading tweets from Google Sheets doc - key=[{google_sheets_key}] worksheet=[{worksheet_number}]')
     rows = gsheets_client.read_from_spreadsheet(google_sheets_key, worksheet_number)
@@ -98,7 +102,8 @@ def tweet_processor(event):
         else:
             timeout = int(tweet_time) - current_time
             logger.info(
-                f'Tweet wit handle [{receipt_handle}] is not ready for sending.  '
-                f'Setting visibility timeout to [{timeout}] seconds'
+                f'Tweet [{message.tweet}] is not ready for sending.  Setting visibility timeout to [{timeout}] seconds'
             )
             sqs_client.change_visibility_timeout(receipt_handle, timeout)
+            # Chalice will automatically all SQS delete_message upon completion unless an exception is raised
+            raise ReschedulingTweetException
