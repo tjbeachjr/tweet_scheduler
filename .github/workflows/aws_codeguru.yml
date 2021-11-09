@@ -18,8 +18,7 @@ jobs:
         uses: aws-actions/codeguru-reviewer@v1.1
         with:
           build_path: target
-          s3_bucket: codeguru-reviewer-my-bucket
-          name: tweet_scheduler
+          s3_bucket: codeguru-reviewer
       - name: Upload review result
         uses: github/codeql-action/upload-sarif@v1
         with:
