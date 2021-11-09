@@ -17,7 +17,6 @@ jobs:
       - name: AWS CodeGuru Reviewer Scanner
         uses: aws-actions/codeguru-reviewer@v1.1
         with:
-          build_path: target
           s3_bucket: codeguru-reviewer-tjbeachjr
       - name: Upload review result
         uses: github/codeql-action/upload-sarif@v1
